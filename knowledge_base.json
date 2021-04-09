@@ -1,0 +1,234 @@
+{
+	"rules" : {
+		"determine-laptop-view" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and"},
+			"qonsequent" : {
+				  "fact" : "powerful",
+				  "question" : "Do you need a powerful laptop? ",
+				  "answers" : ["yes", "no"]
+			}
+		},
+		"powerful" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and"},
+			"qonsequent" : {
+				  "fact" : "purpose",
+				  "question" : "What laptop do you need?",
+				  "answers" : ["game", "work", "office"]
+			}
+		},
+		"purpose-budget" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and"},
+			"qonsequent" : {
+				  "fact" : "budget",
+				  "question" : "What is a budget laptop for?",
+				  "answers" : ["study", "movie"]
+			}
+		},
+		"cpu" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "game"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and"},
+			"qonsequent" : {
+				  "fact" : "cpu",
+				  "question" : "Do you need a laptop on Intel processor?",
+				  "answers" : ["yes", "no"]
+			}
+		},
+		"system" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "work"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and"},
+			"qonsequent" : {
+				  "fact" : "system",
+				  "question" : "What operating system do you need?",
+				  "answers" : ["mac", "windows"]
+			}
+		},
+		"new-laptop" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "work"}, {"system" : "windows"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8": "and"},
+			"qonsequent" : {
+				  "fact" : "newlaptop",
+				  "question" : "Do you need a new laptop?",
+				  "answers" : ["yes", "no"]
+			}
+		},
+		"ssd" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "office"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and"},
+			"qonsequent" : {
+				  "fact" : "ssd",
+				  "question" : "Do you need a ssd?",
+				  "answers" : ["yes", "no"]
+			}
+		},
+		"drive" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "study"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and"},
+			"qonsequent" : {
+				  "fact" : "drive",
+				  "question" : "Do you need a drive?",
+				  "answers" : ["yes", "no"]
+			}
+		},	
+		"ips-?" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "movie"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and"},
+			"qonsequent" : {
+				  "fact" : "ips",
+				  "question" : "Do you need a ips matrix?",
+				  "answers" : ["yes", "no"]
+			}
+		},	
+		"screen-?" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "study"}, {"drive" : "no"}]
+			},
+			"type" : "fact",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"qonsequent" : {
+				  "fact" : "screen",
+				  "question" : "Do you need a small screen?",
+				  "answers" : ["yes", "no"]
+			}
+		},
+		"gaming-intel" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "game"}, {"cpu" : "yes"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "MSI GS66 Stealsh"
+			}
+		},
+		"gaming-amd" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "game"}, {"cpu" : "no"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "HP OMEN 15-ENOO42UR"
+			}
+		},
+		"availability-new-laptop" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "work"}, {"system" : "windows"}, {"newlaptop" : "yes"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and", "10" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Asus TUF Dash F15"
+			}
+		},
+		"availability-old-laptop" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "work"}, {"system" : "windows"}, {"newlaptop" : "no"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and", "10" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Asus ZenBook 15"
+			}
+		},
+		"system-mac" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "work"}, {"system" : "mac"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "MacBook Pro M1"
+			}
+		},
+		"ssd-yes" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "office"}, {"ssd" : "yes"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "HP 250 G7"
+			}
+		},
+		"hhd-yes" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "yes"}, {"purpose" : "office"}, {"ssd" : "no"}, {"powerful" : "no"}, {"budget" : "study"}, {"drive" : "yes"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "5" : "and", "7" : "and", "10" : "and", "12" : "and", "13" : "or", "16" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Acer Aspire 5"
+			}
+		},
+		"ips-yes" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "movie"}, {"ips" : "yes"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Dell G5 15 5590"
+			}
+		},
+		"ips-no" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "movie"}, {"ips" : "no"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Asus VivoBook"
+			}
+		},
+		"small-screen" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "study"}, {"drive" : "no"}, {"screen" : "yes"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and", "10" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Digma EVE 10 C301"
+			}
+		},
+		"normal-screen" : {
+			"defrule" : {
+				"active_facts" : [{"laptop" : "no"}, {"question" : "?"}, {"powerful" : "no"}, {"budget" : "study"}, {"drive" : "no"}, {"screen" : "no"}]
+			},
+			"type" : "concluion",
+			"logical-operators" : {"2" : "and", "4" : "and", "6" : "and", "8" : "and", "10" : "and"},
+			"answer" : {
+				  "Proposed laptop" : "Acer Aspire 3 A317-32"
+			}
+		}
+	}
+}
