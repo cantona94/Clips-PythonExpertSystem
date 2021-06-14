@@ -56,5 +56,3 @@ with open('c:/Users/Владимир/Downloads/123/Expert_system_ist-17bz-st/kno
                 break
             active_fact = ask_question(rules[rule])  # записываем активный факт
             list_used_facts.append(active_fact)  # добавляем факт в список
-
-input()
