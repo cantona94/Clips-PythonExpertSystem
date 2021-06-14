@@ -27,7 +27,7 @@ def ask_question(qonsequent):  # задаем вопрос
     return used_fact
 
 
-with open('knowledge_base.json', 'r') as file:
+with open('c:/Users/Владимир/Downloads/123/Expert_system_ist-17bz-st/knowledge_base.json', 'r') as file:
     rules = json.load(file)['rules']
     # Создаем список и записываем начальные факты
     list_used_facts = [{"laptop": "no"}, {"info": "not_enough"}]
@@ -57,4 +57,4 @@ with open('knowledge_base.json', 'r') as file:
             active_fact = ask_question(rules[rule])  # записываем активный факт
             list_used_facts.append(active_fact)  # добавляем факт в список
 
-print()
+input()
