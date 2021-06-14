@@ -57,4 +57,4 @@ with open('knowledge_base.json', 'r') as file:
             active_fact = ask_question(rules[rule])  # записываем активный факт
             list_used_facts.append(active_fact)  # добавляем факт в список
 
-input()
+print()
